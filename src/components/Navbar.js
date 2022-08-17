@@ -9,6 +9,8 @@ import logo from "../assets/logo.png";
 import { AddShoppingCart } from '@material-ui/icons';
 import { Badge } from '@material-ui/core';
 import {  Link } from 'react-router-dom';
+import { actionTypes } from '../reducer';
+import { useStateValue } from '../StateProvider';
 
 
 
@@ -38,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
     const classes = useStyles();
+    const [{basket},dispatch] = useStateValue();
 
     return (
         <div className={classes.root}>
@@ -60,7 +63,7 @@ export default function Navbar() {
                         </Button>
                         <Link to="/checkout-page">
                         <IconButton aria-label='show cart items' color='inherit'>
-                            <Badge badgeContent={2} color='secondary'>
+                            <Badge badgeContent={basket?.length} color='secondary'>
                                 <AddShoppingCart fontSize="large" color='primary' />
                             </Badge>
                         </IconButton>
