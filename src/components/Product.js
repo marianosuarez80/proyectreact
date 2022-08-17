@@ -16,6 +16,7 @@ import { actionTypes } from '../reducer';
 import { useStateValue } from '../StateProvider';
 
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
@@ -41,22 +42,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Product({ product: { id, name, productType, image, price, rating, description } }) {
     const classes = useStyles();
-    const [{basket},dispatch] = useStateValue();
+    const [{ basket }, dispatch] = useStateValue();
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
-    const addToBasket = ()=>{
+    const addToBasket = () => {
         dispatch({
             type: actionTypes.ADD_TO_BASKET,
-            id,
-             productType,
-             image,
-           price,
-             rating,
-            description,
+            item: {
+                id,
+                name,
+                productType,
+                image,
+                price,
+                rating,
+                description,
+            }
         })
     }
     return (
@@ -74,15 +78,16 @@ export default function Product({ product: { id, name, productType, image, price
                 title={name}
                 subheader="en Stock"
             />
-            <CardMedia className={classes.media} image={image} title={name}/>
+            <CardMedia className={classes.media} image={image} title={name} />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {productType}
                 </Typography>
             </CardContent>
+
             <CardActions disableSpacing>
                 <IconButton aria-label='add to Cart' onClick={addToBasket} >
-                    <AddShoppingCart fontsize='large' />
+                    <AddShoppingCart fontSize='large' />
                 </IconButton>
                 {Array(rating)
                     .fill()
