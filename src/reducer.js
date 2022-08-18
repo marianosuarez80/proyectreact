@@ -6,10 +6,10 @@ export const actionTypes = {
     ADD_TO_BASKET: "ADD_TO_BASKET",
     REMOVE_ITEM: "REMOVE_ITEM"
 }
-// el metodo reducer() ejecuta una funcion reductora sobre cada elemento de un Array, 
-// devolviendo como resultado un unico valor
+
 export const getBasketTotal= (basket)=>{
-    basket?.reduce((acumulador, item)=> item.price + acumulador, 0)
+  return  basket?.reduce((acumulador, item)=> Number(item.price) + Number(acumulador), 0)
+   
 }
 
 const reducer = (state, action) => {

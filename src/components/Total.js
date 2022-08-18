@@ -20,7 +20,9 @@ button:{
 
 const Total = ()=>{
     const classes = useStyles()
+
     const [{ basket }, dispatch] = useStateValue();
+
     return (        
 <div className={classes.root}>
     <h5>total items:  {basket?.length}</h5>
