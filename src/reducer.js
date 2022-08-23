@@ -1,5 +1,8 @@
+import { SettingsBackupRestoreTwoTone } from "@material-ui/icons"
+
 export const initialState = {
-    basket: []
+    basket: [],
+    basketAmount: 0
 }
 
 export const actionTypes = {
@@ -12,13 +15,30 @@ export const getBasketTotal= (basket)=>{
    return basket?.reduce((acumulador, item)=> item.price + acumulador, 0)
 }
 
-const reducer = (state, action) => {
-    console.log(action);
+const reducer = (state = initialState, action) => {
+    console.log(action); 
     switch (action.type) {
         case "ADD_TO_BASKET":
+            let foundItem = false
+            const newListItem = state.basket.map(item => {
+                if (item.id === action.item.id){
+                    item.price += action.item.price
+                    foundItem = true
+                }
+                return item
+            })
+            if (foundItem){
+            
+                return {
+                    ...state,
+                    basket: newListItem,
+                    basketAmount: state.basketAmount++
+                };
+            }
             return {
                 ...state,
                 basket: [...state.basket, action.item],
+                basketAmount: state.basketAmount++
             };
 
         case "REMOVE_ITEM":

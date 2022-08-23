@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
     const classes = useStyles();
-    const [{basket},dispatch] = useStateValue();
+    const [{basket, basketAmount},dispatch] = useStateValue();
 
     return (
         <div className={classes.root}>
@@ -67,7 +67,7 @@ export default function Navbar() {
                         </Link>
                         <Link to="/checkout-page">
                         <IconButton aria-label='show cart items' color='inherit'>
-                            <Badge badgeContent={basket?.length} color='secondary'>
+                            <Badge badgeContent={basketAmount} color='secondary'>
                                 <AddShoppingCart fontSize="large" color='primary' />
                             </Badge>
                         </IconButton>
