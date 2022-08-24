@@ -17,6 +17,8 @@ import { useStateValue } from '../StateProvider';
 
 
 
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -40,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
     const classes = useStyles();
-    const [{basket},dispatch] = useStateValue();
+    const [{basket, basketAmount},dispatch] = useStateValue();
 
     return (
         <div className={classes.root}>
@@ -58,12 +60,14 @@ export default function Navbar() {
                     </Typography>
 
                     <div className={classes.button}>
+                        <Link to="/signin">
                         <Button variant="outlined">
-                            <strong>Login</strong>
+                            <strong>Sign In</strong>
                         </Button>
+                        </Link>
                         <Link to="/checkout-page">
                         <IconButton aria-label='show cart items' color='inherit'>
-                            <Badge badgeContent={basket?.length} color='secondary'>
+                            <Badge badgeContent={basketAmount} color='secondary'>
                                 <AddShoppingCart fontSize="large" color='primary' />
                             </Badge>
                         </IconButton>
