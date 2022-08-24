@@ -2,7 +2,8 @@ import { SettingsBackupRestoreTwoTone } from "@material-ui/icons"
 
 export const initialState = {
     basket: [],
-    basketAmount: 0
+    basketAmount: 0,
+    
 }
 
 export const actionTypes = {
