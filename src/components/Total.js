@@ -38,13 +38,13 @@ button1:{
 
 const Total = ()=>{
     const classes = useStyles()
-    const [{ basket }, dispatch] = useStateValue();
+    const [{ basket, basketAmount}, dispatch] = useStateValue();
     const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
     return (        
 <div className={classes.root}>
-    <h5>total items:  {basket?.length}</h5>
+    <h5>total items:  {basketAmount}</h5>
     <h5>{accounting.formatMoney(getBasketTotal(basket))}</h5>
     
     

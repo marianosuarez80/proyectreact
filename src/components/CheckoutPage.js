@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const CheckoutPage = () => {
     const classes = useStyles();
-    const [{basket},dispatch] = useStateValue();
+    const [{basket, basketAmount},dispatch] = useStateValue();
 
     function FormRow() {
         return (

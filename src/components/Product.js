@@ -60,6 +60,7 @@ export default function Product({ product: { id, name, productType, image, price
                 price,
                 rating,
                 description,
+                entroEnAccion: false
             }
         })
     }
